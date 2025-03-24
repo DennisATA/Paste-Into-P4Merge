@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>419</string>
+	<string>527</string>
 	<key>AMApplicationVersion</key>
-	<string>2.6</string>
+	<string>2.10</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -61,7 +61,7 @@
 					<string>8D0CF809-891E-4D39-A0E5-1221FC331B10</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.Get_Value_of_Variable</string>
+				<string>com.apple.Automator.GetValueofVariable</string>
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
@@ -111,7 +111,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:173.000000</string>
+				<string>673.000000:172.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -171,7 +171,7 @@
 					<string>0716E9F1-CD59-4925-8A12-2E6CB8C49463</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.Set_Value_of_Variable</string>
+				<string>com.apple.Automator.SetValueofVariable</string>
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
@@ -221,7 +221,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:279.000000</string>
+				<string>673.000000:275.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -400,7 +400,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:461.000000</string>
+				<string>673.000000:460.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Text.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -462,7 +462,7 @@
 					<string>List</string>
 					<key>Types</key>
 					<array>
-						<string>com.apple.cocoa.path</string>
+						<string>public.text</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
@@ -537,9 +537,9 @@
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<integer>0</integer>
+						<string>~/Desktop</string>
 						<key>name</key>
-						<string>replaceExistingFiles</string>
+						<string>newFileFolderPath</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -550,9 +550,9 @@
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<string>~/Desktop</string>
+						<integer>0</integer>
 						<key>name</key>
-						<string>newFileFolderPath</string>
+						<string>replaceExistingFiles</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -603,7 +603,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:641.000000</string>
+				<string>673.000000:633.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/New Text File.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -661,7 +661,7 @@
 					<string>0716E9F1-CD59-4925-8A12-2E6CB8C49463</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.Get_Value_of_Variable</string>
+				<string>com.apple.Automator.GetValueofVariable</string>
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
@@ -711,7 +711,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:744.000000</string>
+				<string>673.000000:735.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -769,9 +769,9 @@
 					<key>COMMAND_STRING</key>
 					<string>(
 	php -r 'foreach(file("/tmp/diff.$argv[1].unidiff.txt") as $line) { if((strpos($line, "+") === 0 &amp;&amp; substr($line, 0, 3) != "+++") || substr($line, 0, 1) == " ") { file_put_contents("/tmp/diff.$argv[1].new.txt", substr($line, 1), FILE_APPEND); } if((strpos($line, "-") === 0 &amp;&amp; substr($line, 0, 3) != "---") || substr($line, 0, 1) == " ") { file_put_contents("/tmp/diff.$argv[1].base.txt", substr($line, 1), FILE_APPEND); } }' $2
-	/usr/local/bin/diffmerge /tmp/diff.$2.base.txt /tmp/diff.$2.new.txt
+	/Applications/p4merge.app/Contents/Resources/launchp4merge /tmp/diff.$2.base.txt /tmp/diff.$2.new.txt
     if [ $? -eq 127 ]; then
-        osascript -e 'tell app "System Events" to display dialog "diffmerge command not found, please install diffmerge command line tools"';
+        osascript -e 'tell app "System Events" to display dialog "p4merge not found"';
     fi
 	rm /tmp/diff.$2.base.txt /tmp/diff.$2.new.txt /tmp/diff.$2.unidiff.txt
 ) &gt;/dev/null 2&gt;&amp;1&amp;</string>
@@ -834,9 +834,9 @@
 					<key>1</key>
 					<dict>
 						<key>default value</key>
-						<string></string>
+						<false/>
 						<key>name</key>
-						<string>source</string>
+						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -847,9 +847,9 @@
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<false/>
+						<string></string>
 						<key>name</key>
-						<string>CheckedForUserDefaultShell</string>
+						<string>source</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -887,9 +887,9 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>388.000000:927.000000</string>
+				<string>673.000000:917.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -897,40 +897,40 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>06F5EB98-E30A-46C7-B287-14C0BCBE604D</key>
-		<dict>
-			<key>from</key>
-			<string>12C3FAB8-F3B3-4E86-9430-2DF665CD4551 - 12C3FAB8-F3B3-4E86-9430-2DF665CD4551</string>
-			<key>to</key>
-			<string>54466522-CACA-45C3-B57F-1D1F20974783 - 54466522-CACA-45C3-B57F-1D1F20974783</string>
-		</dict>
-		<key>1AD808DD-187E-4B0B-8A95-686278351A0C</key>
-		<dict>
-			<key>from</key>
-			<string>9170EECE-492D-4444-9A96-86E8CA638341 - 9170EECE-492D-4444-9A96-86E8CA638341</string>
-			<key>to</key>
-			<string>DD55971E-A61B-4A13-86AB-8638F482481C - DD55971E-A61B-4A13-86AB-8638F482481C</string>
-		</dict>
-		<key>343BBFDD-C009-4356-A86A-98BA0E9F73A1</key>
+		<key>0BF6D330-E529-4B04-A3EF-E26F7106045A</key>
 		<dict>
 			<key>from</key>
 			<string>13D964F0-F2DD-4ABB-83EB-C1F3B842F6CE - 13D964F0-F2DD-4ABB-83EB-C1F3B842F6CE</string>
 			<key>to</key>
 			<string>EE5F5350-1B59-4DD3-9115-65E6214B9BFA - EE5F5350-1B59-4DD3-9115-65E6214B9BFA</string>
 		</dict>
-		<key>95120B72-93AD-430D-894F-94A777156E70</key>
-		<dict>
-			<key>from</key>
-			<string>54466522-CACA-45C3-B57F-1D1F20974783 - 54466522-CACA-45C3-B57F-1D1F20974783</string>
-			<key>to</key>
-			<string>9170EECE-492D-4444-9A96-86E8CA638341 - 9170EECE-492D-4444-9A96-86E8CA638341</string>
-		</dict>
-		<key>F8296470-C633-461A-A8D0-1A07C485AE2E</key>
+		<key>0F7FC6D5-44D8-4FCC-8FD8-48F1A46264CB</key>
 		<dict>
 			<key>from</key>
 			<string>EE5F5350-1B59-4DD3-9115-65E6214B9BFA - EE5F5350-1B59-4DD3-9115-65E6214B9BFA</string>
 			<key>to</key>
 			<string>12C3FAB8-F3B3-4E86-9430-2DF665CD4551 - 12C3FAB8-F3B3-4E86-9430-2DF665CD4551</string>
+		</dict>
+		<key>B0CAFAF8-AEEA-4E10-B1A2-BA025E8DBF61</key>
+		<dict>
+			<key>from</key>
+			<string>12C3FAB8-F3B3-4E86-9430-2DF665CD4551 - 12C3FAB8-F3B3-4E86-9430-2DF665CD4551</string>
+			<key>to</key>
+			<string>54466522-CACA-45C3-B57F-1D1F20974783 - 54466522-CACA-45C3-B57F-1D1F20974783</string>
+		</dict>
+		<key>BC2A53A8-0C8D-4310-A253-BE67A66BFE20</key>
+		<dict>
+			<key>from</key>
+			<string>9170EECE-492D-4444-9A96-86E8CA638341 - 9170EECE-492D-4444-9A96-86E8CA638341</string>
+			<key>to</key>
+			<string>DD55971E-A61B-4A13-86AB-8638F482481C - DD55971E-A61B-4A13-86AB-8638F482481C</string>
+		</dict>
+		<key>DC2C455F-8B9F-4015-AFEF-6253EFBCA4F5</key>
+		<dict>
+			<key>from</key>
+			<string>54466522-CACA-45C3-B57F-1D1F20974783 - 54466522-CACA-45C3-B57F-1D1F20974783</string>
+			<key>to</key>
+			<string>9170EECE-492D-4444-9A96-86E8CA638341 - 9170EECE-492D-4444-9A96-86E8CA638341</string>
 		</dict>
 	</dict>
 	<key>variables</key>
